@@ -13,10 +13,10 @@ import org.usfirst.frc.team5638.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class ExampleCommand extends Command {
-	public ExampleCommand() {
+public class driveCom extends Command {
+	public driveCom() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.kExampleSubsystem);
+		requires(Robot.driveSub);
 	}
 
 	// Called just before this Command runs the first time
