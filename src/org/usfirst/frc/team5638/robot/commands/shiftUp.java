@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5638.robot.commands;
 
+import org.usfirst.frc.team5638.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -8,12 +10,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class shiftUp extends Command {
 
     public shiftUp() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.shiftSub);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.shiftSub.shiftUp();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,5 +34,6 @@ public class shiftUp extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
