@@ -7,6 +7,14 @@
 
 package org.usfirst.frc.team5638.robot;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -14,13 +22,35 @@ package org.usfirst.frc.team5638.robot;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+	//DRIVE TRAIN
+	public static WPI_TalonSRX leftMaster;
+	public static WPI_TalonSRX leftSlave;
+	public static WPI_TalonSRX rightMaster;
+	public static WPI_TalonSRX rightSlave;
+	public static DoubleSolenoid shiftSol;
+	public static DifferentialDrive driveTrain;
+	//DRIVE TRAIN
+	//ELEVATOR
+	public static WPI_TalonSRX elevator;
+	//ELEVATOR
+	
+	public static void init() {
+		//DRIVE TRAIN
+		leftMaster = new WPI_TalonSRX(2);
+		leftSlave = new WPI_TalonSRX(3);
+		rightMaster = new WPI_TalonSRX(4);
+		rightSlave = new WPI_TalonSRX(5);
+		
+		leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		leftSlave.set(ControlMode.Follower, 2);
+		
+		rightMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		rightSlave.set(ControlMode.Follower, 4);
+		
+		SpeedControllerGroup leftGearbox = new SpeedControllerGroup(leftMaster, leftSlave);
+		SpeedControllerGroup rightGearbox = new SpeedControllerGroup(rightMaster, rightSlave);
+		
+		driveTrain = new DifferentialDrive(leftGearbox, rightGearbox);
+		//DRIVE TRAIN
+	}
 }
