@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5638.robot.commands.driveCom;
 import org.usfirst.frc.team5638.robot.subsystems.driveSub;
+import org.usfirst.frc.team5638.robot.subsystems.shiftSub;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +26,7 @@ import org.usfirst.frc.team5638.robot.subsystems.driveSub;
  */
 public class Robot extends IterativeRobot {
 	public static final driveSub driveSub = new driveSub();
+	public static final shiftSub shiftSub = new shiftSub();
 	public static OI m_oi;
 
 	Command m_autonomousCommand;

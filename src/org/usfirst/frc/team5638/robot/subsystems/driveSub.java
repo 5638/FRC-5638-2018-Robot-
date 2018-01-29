@@ -7,17 +7,29 @@
 
 package org.usfirst.frc.team5638.robot.subsystems;
 
+import org.usfirst.frc.team5638.robot.RobotMap;
+import org.usfirst.frc.team5638.robot.commands.driveCom;
+
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
 public class driveSub extends Subsystem {
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
+	
+	private final DifferentialDrive driveTrain = RobotMap.driveTrain;
 
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new driveCom());
+	}
+	
+	public void drive(XboxController xbox) {
+		driveTrain.arcadeDrive((xbox.getRawAxis(2) + -xbox.getRawAxis(3)), -xbox.getRawAxis(0));
+	}
+	
+	public void stop() {
+		driveTrain.arcadeDrive(0, 0);
 	}
 }

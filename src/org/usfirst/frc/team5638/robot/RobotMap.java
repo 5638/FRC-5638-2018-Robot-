@@ -51,6 +51,13 @@ public class RobotMap {
 		SpeedControllerGroup rightGearbox = new SpeedControllerGroup(rightMaster, rightSlave);
 		
 		driveTrain = new DifferentialDrive(leftGearbox, rightGearbox);
+		
+		shiftSol = new DoubleSolenoid(0, 0, 1);
 		//DRIVE TRAIN
+		//ELEVATOR
+		elevator = new WPI_TalonSRX(6);
+		
+		elevator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		//ELEVATOR
 	}
 }
