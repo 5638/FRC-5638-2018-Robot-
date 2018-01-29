@@ -33,7 +33,9 @@ public class RobotMap {
 	//ELEVATOR
 	public static WPI_TalonSRX elevator;
 	//ELEVATOR
-	
+	//DUMPER
+	public static WPI_TalonSRX dumper;
+	//DUMPER
 	public static void init() {
 		//DRIVE TRAIN
 		leftMaster = new WPI_TalonSRX(2);
@@ -52,5 +54,8 @@ public class RobotMap {
 		
 		driveTrain = new DifferentialDrive(leftGearbox, rightGearbox);
 		//DRIVE TRAIN
+		//DUMPER
+		dumper = new WPI_TalonSRX(7);
+		//DUMPER
 	}
 }
