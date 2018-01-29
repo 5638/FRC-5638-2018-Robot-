@@ -13,12 +13,13 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team5638.robot.commands.climberCom;
 import org.usfirst.frc.team5638.robot.commands.driveCom;
 import org.usfirst.frc.team5638.robot.commands.dumperCom;
 import org.usfirst.frc.team5638.robot.subsystems.dumperSub;
 import org.usfirst.frc.team5638.robot.subsystems.driveSub;
 import org.usfirst.frc.team5638.robot.subsystems.shiftSub;
-
+import org.usfirst.frc.team5638.robot.subsystems.climberSub;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -29,8 +30,10 @@ import org.usfirst.frc.team5638.robot.subsystems.shiftSub;
 public class Robot extends IterativeRobot {
 	public static final driveSub driveSub = new driveSub();
 	public static final shiftSub shiftSub = new shiftSub();
+	public static final dumperSub dumperSub = new dumperSub();
+	public static final climberSub climberSub = new climberSub();
 	public static OI m_oi;
-	public static dumperSub dumperSub;
+	
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -46,7 +49,7 @@ public class Robot extends IterativeRobot {
 		m_chooser.addDefault("Default Auto", new driveCom());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
-		dumperSub = new dumperSub();
+		
 	}
 
 	/**
