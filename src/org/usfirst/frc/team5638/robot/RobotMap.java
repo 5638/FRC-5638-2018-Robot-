@@ -33,7 +33,9 @@ public class RobotMap {
 	//ELEVATOR
 	public static WPI_TalonSRX elevator;
 	//ELEVATOR
-	
+	//DUMPER
+	public static WPI_TalonSRX dumper;
+	//DUMPER
 	public static void init() {
 		//DRIVE TRAIN
 		leftMaster = new WPI_TalonSRX(2);
@@ -54,10 +56,15 @@ public class RobotMap {
 		
 		shiftSol = new DoubleSolenoid(0, 0, 1);
 		//DRIVE TRAIN
+
 		//ELEVATOR
 		elevator = new WPI_TalonSRX(6);
 		
 		elevator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		//ELEVATOR
+
+		//DUMPER
+		dumper = new WPI_TalonSRX(7);
+		//DUMPER
 	}
 }

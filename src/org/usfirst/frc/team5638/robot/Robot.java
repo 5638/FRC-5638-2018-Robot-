@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5638.robot.commands.driveCom;
+import org.usfirst.frc.team5638.robot.commands.dumperCom;
+import org.usfirst.frc.team5638.robot.subsystems.dumperSub;
 import org.usfirst.frc.team5638.robot.subsystems.driveSub;
 import org.usfirst.frc.team5638.robot.subsystems.shiftSub;
 
@@ -28,9 +30,11 @@ public class Robot extends IterativeRobot {
 	public static final driveSub driveSub = new driveSub();
 	public static final shiftSub shiftSub = new shiftSub();
 	public static OI m_oi;
-
+	public static dumperSub dumperSub;
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -42,6 +46,7 @@ public class Robot extends IterativeRobot {
 		m_chooser.addDefault("Default Auto", new driveCom());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		dumperSub = new dumperSub();
 	}
 
 	/**
