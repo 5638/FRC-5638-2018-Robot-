@@ -64,6 +64,20 @@ public class RobotMap {
 		elevator = new WPI_TalonSRX(6);
 		
 		elevator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		elevator.setSensorPhase(true);
+		elevator.configNominalOutputForward(0, 10);
+		elevator.configNominalOutputReverse(0, 10);
+		elevator.configPeakOutputForward(1, 10);
+		elevator.configPeakOutputReverse(-1, 10);
+		elevator.configAllowableClosedloopError(0, 0, 10);
+		
+		elevator.config_kF(0, 0.0, 10);
+		elevator.config_kP(0, 0.1, 10);
+		elevator.config_kI(0, 0.0, 10);
+		elevator.config_kD(0, 0.0, 10);
+		
+		int absolutePosition = elevator.getSensorCollection().getPulseWidthPosition();
+		elevator.setSelectedSensorPosition(absolutePosition, 0, 10);
 		//ELEVATOR
 
 		//DUMPER
