@@ -20,6 +20,8 @@ import org.usfirst.frc.team5638.robot.subsystems.driveSub;
 import org.usfirst.frc.team5638.robot.subsystems.shiftSub;
 import org.usfirst.frc.team5638.robot.subsystems.climberSub;
 import org.usfirst.frc.team5638.robot.subsystems.elevatorSub;
+import org.usfirst.frc.team5638.robot.subsystems.squeezer;
+import org.usfirst.frc.team5638.robot.subsystems.intakeWheels;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -35,6 +37,8 @@ public class Robot extends IterativeRobot {
 	public static dumperSub dumperSub;
 	public static climberSub climberSub;
 	public static elevatorSub elevatorSub;
+	public static squeezer squeezer;
+	public static intakeWheels intakeWheels;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -52,6 +56,8 @@ public class Robot extends IterativeRobot {
 		dumperSub = new dumperSub();
 		climberSub = new climberSub();
 		elevatorSub = new elevatorSub();
+		squeezer = new squeezer();
+		intakeWheels = new intakeWheels();
 		
 		//m_chooser.addDefault("Default Auto", new driveCom());
 		// chooser.addObject("My Auto", new MyAutoCommand());

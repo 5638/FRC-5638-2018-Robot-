@@ -1,6 +1,13 @@
 package org.usfirst.frc.team5638.robot.commands;
 
+import org.usfirst.frc.team5638.robot.OI;
 import org.usfirst.frc.team5638.robot.Robot;
+import org.usfirst.frc.team5638.robot.RobotMap;
+import org.usfirst.frc.team5638.robot.subsystems.climberSub;
+import org.usfirst.frc.team5638.robot.subsystems.driveSub;
+import org.usfirst.frc.team5638.robot.subsystems.dumperSub;
+import org.usfirst.frc.team5638.robot.subsystems.elevatorSub;
+import org.usfirst.frc.team5638.robot.subsystems.shiftSub;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -26,11 +33,12 @@ public class elevatorUpCom extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return RobotMap.topLimitSwitch.get();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.elevatorSub.stop();
     }
 
     // Called when another command which requires one or more of the same

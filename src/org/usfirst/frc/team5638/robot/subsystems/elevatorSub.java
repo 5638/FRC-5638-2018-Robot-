@@ -35,5 +35,10 @@ public class elevatorSub extends Subsystem {
     	double targetPositionRotations = -10 * 4096; //-10 rotations * 4096 units/rev in either direction
     	elevator.set(ControlMode.Position, targetPositionRotations);
     }
+    
+    public void stop() {
+    	double targetPositionRotations = 0 * 4096; //0 rotations * 4096 units/rev in either direction
+    	elevator.set(ControlMode.Position, targetPositionRotations);
+    }
 }
 

@@ -1,20 +1,17 @@
 package org.usfirst.frc.team5638.robot.commands;
 
 import org.usfirst.frc.team5638.robot.Robot;
-import org.usfirst.frc.team5638.robot.RobotMap;
-import org.usfirst.frc.team5638.robot.subsystems.elevatorSub;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class elevatorDownCom extends Command {
+public class intakeClose extends Command {
 
-    public elevatorDownCom() {
+    public intakeClose() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.elevatorSub);
+        requires(Robot.squeezer);
     }
 
     // Called just before this Command runs the first time
@@ -23,17 +20,16 @@ public class elevatorDownCom extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.elevatorSub.elevatorDown();
+    	Robot.squeezer.close();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return RobotMap.bottomLimitSwitch.get();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.elevatorSub.stop();
     }
 
     // Called when another command which requires one or more of the same
