@@ -8,9 +8,12 @@
 package org.usfirst.frc.team5638.robot.subsystems;
 
 import org.usfirst.frc.team5638.robot.RobotMap;
-import org.usfirst.frc.team5638.robot.commands.driveCom;
+import org.usfirst.frc.team5638.robot.commands.forwardDriveCom;
+import org.usfirst.frc.team5638.robot.commands.shiftUp;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -19,14 +22,38 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class driveSub extends Subsystem {
 	
+	public JoystickButton forwardBut;
+	
+	
 	private final DifferentialDrive driveTrain = RobotMap.driveTrain;
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new driveCom());
+		setDefaultCommand(new forwardDriveCom());
 	}
 	
-	public void drive(XboxController xbox) {
-		driveTrain.arcadeDrive((xbox.getRawAxis(2) + -xbox.getRawAxis(3)), -xbox.getRawAxis(0));
+	public void forwardDrive(XboxController xbox1) {
+		
+		double steerStick;
+		steerStick = xbox1.getRawAxis(0);
+		
+		if(steerStick < .1 || steerStick > -.1) {
+			steerStick = 0;
+		}
+		
+		driveTrain.arcadeDrive((xbox1.getRawAxis(2) + -xbox1.getRawAxis(3)), -steerStick);
+	}
+	
+	public void reverseDrive(XboxController xbox1) {
+			
+		double steerStick;
+		
+		steerStick = xbox1.getRawAxis(0);
+		
+		if(steerStick < .1 || steerStick > -.1) {
+			steerStick = 0;
+		}
+			
+		driveTrain.arcadeDrive((-xbox1.getRawAxis(2) + xbox1.getRawAxis(3)), steerStick);
 	}
 	
 	public void stop() {

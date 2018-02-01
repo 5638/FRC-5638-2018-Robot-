@@ -13,8 +13,8 @@ import org.usfirst.frc.team5638.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class driveCom extends Command {
-	public driveCom() {
+public class forwardDriveCom extends Command {
+	public forwardDriveCom() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.driveSub);
 	}
@@ -27,7 +27,7 @@ public class driveCom extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.driveSub.drive(Robot.m_oi.xbox1);
+		Robot.driveSub.forwardDrive(Robot.m_oi.xbox1);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

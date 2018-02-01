@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -32,7 +33,14 @@ public class RobotMap {
 	//DRIVE TRAIN
 	//ELEVATOR
 	public static WPI_TalonSRX elevator;
+	public static DigitalInput topLimitSwitch;
+	public static DigitalInput bottomLimitSwitch;
 	//ELEVATOR
+	//INTAKE
+	public static DoubleSolenoid SQUEEEEEEEEZE;
+	public static WPI_TalonSRX intake1;
+	public static WPI_TalonSRX intake2;
+	//INTAKE
 	//DUMPER
 	public static WPI_TalonSRX dumper;
 	//DUMPER
@@ -65,7 +73,30 @@ public class RobotMap {
 		elevator = new WPI_TalonSRX(6);
 		
 		elevator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		elevator.setSensorPhase(true);
+		elevator.configNominalOutputForward(0, 10);
+		elevator.configNominalOutputReverse(0, 10);
+		elevator.configPeakOutputForward(1, 10);
+		elevator.configPeakOutputReverse(-1, 10);
+		elevator.configAllowableClosedloopError(0, 0, 10);
+		
+		elevator.config_kF(0, 0.0, 10);
+		elevator.config_kP(0, 0.1, 10);
+		elevator.config_kI(0, 0.0, 10);
+		elevator.config_kD(0, 0.0, 10);
+		
+		int absolutePosition = elevator.getSensorCollection().getPulseWidthPosition();
+		elevator.setSelectedSensorPosition(absolutePosition, 0, 10);
+		
+		topLimitSwitch = new DigitalInput(1);
+		bottomLimitSwitch = new DigitalInput(2);
 		//ELEVATOR
+		
+		//INTAKE
+		SQUEEEEEEEEZE = new DoubleSolenoid(1, 0, 1);
+		intake1 = new WPI_TalonSRX(9);
+		intake2 = new WPI_TalonSRX(10);
+		//INTAKE
 
 		//DUMPER
 		dumper = new WPI_TalonSRX(7);
