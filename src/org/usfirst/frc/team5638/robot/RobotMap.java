@@ -76,8 +76,8 @@ public class RobotMap {
 		elevator.setSensorPhase(true);
 		elevator.configNominalOutputForward(0, 10);
 		elevator.configNominalOutputReverse(0, 10);
-		elevator.configPeakOutputForward(1, 10);
-		elevator.configPeakOutputReverse(-1, 10);
+		elevator.configPeakOutputForward(.5, 10);
+		elevator.configPeakOutputReverse(-.5, 10);
 		elevator.configAllowableClosedloopError(0, 0, 10);
 		
 		elevator.config_kF(0, 0.0, 10);
@@ -100,12 +100,27 @@ public class RobotMap {
 
 		//DUMPER
 		dumper = new WPI_TalonSRX(7);
+		
+		dumper.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		dumper.setSensorPhase(true);
+		dumper.configNominalOutputForward(0, 10);
+		dumper.configNominalOutputReverse(0, 10);
+		dumper.configPeakOutputForward(.5, 10);
+		dumper.configPeakOutputReverse(-.5, 10);
+		dumper.configAllowableClosedloopError(0, 0, 10);
+		
+		dumper.config_kF(0, 0.0, 10);
+		dumper.config_kP(0, 0.1, 10);
+		dumper.config_kI(0, 0.0, 10);
+		dumper.config_kD(0, 0.0, 10);
+		
+		int absolutePositionDumper = dumper.getSensorCollection().getPulseWidthPosition();
+		elevator.setSelectedSensorPosition(absolutePositionDumper, 0, 10);
 		//DUMPER
 		
 		//CLIMBER
 		climber = new WPI_TalonSRX(8);
 		winch = new WPI_TalonSRX(9);
 		//CLIMBER
-	
 	}
 }
