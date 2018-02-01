@@ -2,7 +2,6 @@ package org.usfirst.frc.team5638.robot.commands;
 
 import org.usfirst.frc.team5638.robot.Robot;
 import org.usfirst.frc.team5638.robot.RobotMap;
-import org.usfirst.frc.team5638.robot.subsystems.elevatorSub;
 
 import edu.wpi.first.wpilibj.command.Command;
 

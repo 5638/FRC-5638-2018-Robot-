@@ -1,13 +1,7 @@
 package org.usfirst.frc.team5638.robot.commands;
 
-import org.usfirst.frc.team5638.robot.OI;
 import org.usfirst.frc.team5638.robot.Robot;
 import org.usfirst.frc.team5638.robot.RobotMap;
-import org.usfirst.frc.team5638.robot.subsystems.climberSub;
-import org.usfirst.frc.team5638.robot.subsystems.driveSub;
-import org.usfirst.frc.team5638.robot.subsystems.dumperSub;
-import org.usfirst.frc.team5638.robot.subsystems.elevatorSub;
-import org.usfirst.frc.team5638.robot.subsystems.shiftSub;
 
 import edu.wpi.first.wpilibj.command.Command;
 

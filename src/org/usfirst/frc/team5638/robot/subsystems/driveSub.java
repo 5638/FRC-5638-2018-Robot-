@@ -9,9 +9,7 @@ package org.usfirst.frc.team5638.robot.subsystems;
 
 import org.usfirst.frc.team5638.robot.RobotMap;
 import org.usfirst.frc.team5638.robot.commands.forwardDriveCom;
-import org.usfirst.frc.team5638.robot.commands.shiftUp;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Subsystem;
