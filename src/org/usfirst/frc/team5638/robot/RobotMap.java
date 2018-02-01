@@ -38,6 +38,7 @@ public class RobotMap {
 	//DUMPER
 	//CLIMBER
 	public static WPI_TalonSRX climber;
+	public static WPI_TalonSRX winch;
 	//CLIMBER
 	public static void init() {
 		//DRIVE TRAIN
@@ -72,6 +73,7 @@ public class RobotMap {
 		
 		//CLIMBER
 		climber = new WPI_TalonSRX(8);
+		winch = new WPI_TalonSRX(9);
 		//CLIMBER
 	
 	}

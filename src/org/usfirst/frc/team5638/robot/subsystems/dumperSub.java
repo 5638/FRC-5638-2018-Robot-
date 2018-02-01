@@ -20,5 +20,14 @@ public class dumperSub extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new dumperCom());
     }
+    public void dumperDump(){
+    	dumper.set(0.5);
+    }
+    public void dumperReset() {
+    	dumper.set(-0.5);
+    }
+    public void dumperStop() {
+    	dumper.set(0);
+    }
 }
 
