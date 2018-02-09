@@ -10,11 +10,15 @@ package org.usfirst.frc.team5638.robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Timer.Interface;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -24,36 +28,37 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class RobotMap {
 	//DRIVE TRAIN
-	public static WPI_TalonSRX leftMaster;
-	public static WPI_TalonSRX leftSlave;
-	public static WPI_TalonSRX rightMaster;
-	public static WPI_TalonSRX rightSlave;
-	public static DoubleSolenoid shiftSol;
+	public static WPI_TalonSRX leftMaster; 		//2
+	public static WPI_VictorSPX leftSlave; 		//3
+	public static WPI_TalonSRX rightMaster;		//4
+	public static WPI_VictorSPX rightSlave;		//5
+	public static DoubleSolenoid shiftSol; 	
 	public static DifferentialDrive driveTrain;
 	//DRIVE TRAIN
 	//ELEVATOR
-	public static WPI_TalonSRX elevator;
+	public static WPI_TalonSRX elevator;		//6
 	public static DigitalInput topLimitSwitch;
 	public static DigitalInput bottomLimitSwitch;
 	//ELEVATOR
 	//INTAKE
 	public static DoubleSolenoid SQUEEEEEEEEZE;
-	public static WPI_TalonSRX intake1;
-	public static WPI_TalonSRX intake2;
+	public static WPI_TalonSRX intake1;			//9
+	public static WPI_VictorSPX intake2;		//10
 	//INTAKE
 	//DUMPER
-	public static WPI_TalonSRX dumper;
+	public static WPI_TalonSRX dumper;			//7
 	//DUMPER
 	//CLIMBER
-	public static WPI_TalonSRX climber;
-	public static WPI_TalonSRX winch;
+	public static WPI_VictorSPX climber;		//8
+	public static WPI_TalonSRX winch;			//11
+	public static WPI_VictorSPX winch2;			//12
 	//CLIMBER
 	public static void init() {
 		//DRIVE TRAIN
 		leftMaster = new WPI_TalonSRX(2);
-		leftSlave = new WPI_TalonSRX(3);
+		leftSlave = new WPI_VictorSPX(3);
 		rightMaster = new WPI_TalonSRX(4);
-		rightSlave = new WPI_TalonSRX(5);
+		rightSlave = new WPI_VictorSPX(5);
 		
 		leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		leftSlave.set(ControlMode.Follower, 2);
@@ -67,6 +72,9 @@ public class RobotMap {
 		driveTrain = new DifferentialDrive(leftGearbox, rightGearbox);
 		
 		shiftSol = new DoubleSolenoid(0, 0, 1);
+		
+		SmartDashboard.putNumber("Left", leftMaster.getSelectedSensorPosition(0)/4096);
+		SmartDashboard.putNumber("Right", rightMaster.getSelectedSensorPosition(0)/4096);
 		//DRIVE TRAIN
 
 		//ELEVATOR
@@ -90,12 +98,16 @@ public class RobotMap {
 		
 		topLimitSwitch = new DigitalInput(1);
 		bottomLimitSwitch = new DigitalInput(2);
+		
+		SmartDashboard.putNumber("Elevator", elevator.getSelectedSensorPosition(0));
 		//ELEVATOR
 		
 		//INTAKE
 		SQUEEEEEEEEZE = new DoubleSolenoid(1, 0, 1);
 		intake1 = new WPI_TalonSRX(9);
-		intake2 = new WPI_TalonSRX(10);
+		intake2 = new WPI_VictorSPX(10);
+		
+		intake2.set(ControlMode.Follower, 9);
 		//INTAKE
 
 		//DUMPER
@@ -119,8 +131,13 @@ public class RobotMap {
 		//DUMPER
 		
 		//CLIMBER
-		climber = new WPI_TalonSRX(8);
-		winch = new WPI_TalonSRX(9);
+		climber = new WPI_VictorSPX(8);
+		winch = new WPI_TalonSRX(11);
+		winch2 = new WPI_VictorSPX(12);
+		
+		winch2.set(ControlMode.Follower, 11);
 		//CLIMBER
+		
+		
 	}
 }

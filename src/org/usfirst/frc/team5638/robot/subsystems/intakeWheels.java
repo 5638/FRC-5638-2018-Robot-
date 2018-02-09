@@ -3,6 +3,7 @@ package org.usfirst.frc.team5638.robot.subsystems;
 import org.usfirst.frc.team5638.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class intakeWheels extends Subsystem {
 
 	private final WPI_TalonSRX intakeWheel1 = RobotMap.intake1;
-	private final WPI_TalonSRX intakeWheel2 = RobotMap.intake2;
+	private final WPI_VictorSPX intakeWheel2 = RobotMap.intake2;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

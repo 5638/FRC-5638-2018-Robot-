@@ -15,7 +15,10 @@ import org.usfirst.frc.team5638.robot.commands.elevatorUpCom;
 import org.usfirst.frc.team5638.robot.commands.forwardDriveCom;
 import org.usfirst.frc.team5638.robot.commands.reverseDriveCom;
 import org.usfirst.frc.team5638.robot.commands.shiftDown;
-
+import org.usfirst.frc.team5638.robot.commands.dumperReset;
+import org.usfirst.frc.team5638.robot.commands.dumperDump;
+import org.usfirst.frc.team5638.robot.commands.climberCom;
+import org.usfirst.frc.team5638.robot.commands.winchCom;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -36,6 +39,18 @@ public class OI {
 	public JoystickButton eleUP;
 	public JoystickButton eleDO;
 	//ELEVATOR
+	
+	//DUMPER
+	public JoystickButton Dumpdown;
+	public JoystickButton Dumpup;
+	//DUMPER
+	
+	//CLIMB
+	public JoystickButton Carmup;
+	public JoystickButton Carmdown;
+	public JoystickButton Winchout;
+	public JoystickButton Winchin;
+	//CLIMB
 	
 	public OI() {
 		xbox1 = new XboxController(0);
@@ -58,5 +73,23 @@ public class OI {
 		eleDO = new JoystickButton(xbox2, 1);
 		eleDO.whileHeld(new elevatorDownCom());
 		//ELEVATOR
+		
+		//DUMPER
+		Dumpdown = new JoystickButton(xbox2, 2);
+		Dumpdown.whenPressed(new dumperReset());
+		Dumpup = new JoystickButton(xbox2, 4);
+		Dumpup.whenPressed(new dumperDump());
+		//DUMPER
+		
+		//CLIMB
+		Carmup = new JoystickButton(xbox2, 6);
+		Carmup.whileHeld(new climberCom());
+		Carmdown = new JoystickButton(xbox2, 6);
+		Carmdown.whileHeld(new climberCom());
+		Winchout = new JoystickButton(xbox2, 7);
+		Winchout.whileHeld(new winchCom());
+		Winchin = new JoystickButton(xbox2, 8);
+		Winchin.whileHeld(new winchCom());
+		//CLIMB
 	}
 }

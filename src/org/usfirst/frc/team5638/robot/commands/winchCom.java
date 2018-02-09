@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class climberCom extends Command {
+public class winchCom extends Command {
 
-    public climberCom() {
+    public winchCom() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.climberSub);
@@ -17,14 +17,12 @@ public class climberCom extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-   
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.climberSub.armrUp();
-    	Robot.climberSub.armDown();
-    	Robot.climberSub.armStop();
+    	Robot.climberSub.winchIn();
+    	Robot.climberSub.winchOut();
     }
 
     // Make this return true when this Command no longer needs to run execute()
