@@ -21,7 +21,7 @@ public class dumperReset extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.dumperSub.dumperReset();
+    	Robot.dumperSub.dumpBack();//.dumperReset();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,6 +31,7 @@ public class dumperReset extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.dumperSub.dumperStop();
     }
 
     // Called when another command which requires one or more of the same

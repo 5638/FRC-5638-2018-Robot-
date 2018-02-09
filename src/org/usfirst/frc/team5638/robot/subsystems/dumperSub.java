@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5638.robot.subsystems;
 
 import org.usfirst.frc.team5638.robot.RobotMap;
-import org.usfirst.frc.team5638.robot.commands.dumperCom;
+import org.usfirst.frc.team5638.robot.commands.dumperReset;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -20,16 +20,26 @@ public class dumperSub extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new dumperCom());
+    	setDefaultCommand(new dumperReset());
     }
     public void dumperDump(){
     	double targetPostitionRotations = .5 * 4096; //.5 rotations * 4096 units/rev in either direction
     	dumper.set(ControlMode.Position, targetPostitionRotations);
     }
+    
     public void dumperReset() {
     	double targetPostitionRotations = -.5 * 4096; //-.5 rotations * 4096 units/rev in either direction
     	dumper.set(ControlMode.Position, targetPostitionRotations);
     }
+    
+    public void dumpManual() {
+    	dumper.set(.1);
+    }
+    
+    public void dumpBack() {
+    	dumper.set(-.1);
+    }
+    
     public void dumperStop() {
     	dumper.set(0);
     }

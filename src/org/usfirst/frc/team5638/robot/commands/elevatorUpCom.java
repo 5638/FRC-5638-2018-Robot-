@@ -22,17 +22,18 @@ public class elevatorUpCom extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.elevatorSub.elevatorUp();
+    	Robot.elevatorSub.elevatorUpManual();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return RobotMap.topLimitSwitch.get();
+        //return RobotMap.topLimitSwitch.get();
+    	return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.elevatorSub.stop();
+    	Robot.elevatorSub.stopManual();
     }
 
     // Called when another command which requires one or more of the same
