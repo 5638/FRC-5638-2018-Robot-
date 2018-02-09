@@ -27,10 +27,10 @@ public class climberSub extends Subsystem {
     	setDefaultCommand(new climberCom());
     }
     public void armrUp() {
-    		climber.set(0.5);
+    		climber.set(0.25);
     }
     public void armDown() {
-    		climber.set(-0.5);
+    		climber.set(-0.25);
     }
     public void armStop() {
     	climber.set(0);
