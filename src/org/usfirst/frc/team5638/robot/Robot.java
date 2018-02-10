@@ -47,6 +47,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		RobotMap.init();
 		m_oi = new OI();
 		driveSub = new driveSub();
 		shiftSub = new shiftSub();

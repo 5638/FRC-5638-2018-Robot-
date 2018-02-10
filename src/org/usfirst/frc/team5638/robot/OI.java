@@ -17,7 +17,8 @@ import org.usfirst.frc.team5638.robot.commands.reverseDriveCom;
 import org.usfirst.frc.team5638.robot.commands.shiftDown;
 import org.usfirst.frc.team5638.robot.commands.dumperReset;
 import org.usfirst.frc.team5638.robot.commands.dumperDump;
-import org.usfirst.frc.team5638.robot.commands.climberCom;
+import org.usfirst.frc.team5638.robot.commands.armDownCom;
+import org.usfirst.frc.team5638.robot.commands.armUpCom;
 import org.usfirst.frc.team5638.robot.commands.winchCom;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -83,9 +84,9 @@ public class OI {
 		
 		//CLIMB
 		Carmup = new JoystickButton(xbox2, 6);
-		Carmup.whileHeld(new climberCom());
+		Carmup.whileHeld(new armUpCom());
 		Carmdown = new JoystickButton(xbox2, 6);
-		Carmdown.whileHeld(new climberCom());
+		Carmdown.whileHeld(new armDownCom());
 		Winchout = new JoystickButton(xbox2, 7);
 		Winchout.whileHeld(new winchCom());
 		Winchin = new JoystickButton(xbox2, 8);

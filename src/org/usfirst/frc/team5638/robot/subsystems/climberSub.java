@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5638.robot.subsystems;
 
 import org.usfirst.frc.team5638.robot.RobotMap;
-import org.usfirst.frc.team5638.robot.commands.climberCom;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
@@ -24,7 +23,6 @@ public class climberSub extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new climberCom());
     }
     public void armrUp() {
     		climber.set(0.25);
