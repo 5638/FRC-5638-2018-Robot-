@@ -12,13 +12,8 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import org.usfirst.frc.team5638.robot.subsystems.dumperSub;
-import org.usfirst.frc.team5638.robot.subsystems.driveSub;
-import org.usfirst.frc.team5638.robot.subsystems.shiftSub;
-import org.usfirst.frc.team5638.robot.subsystems.climberSub;
-import org.usfirst.frc.team5638.robot.subsystems.elevatorSub;
-import org.usfirst.frc.team5638.robot.subsystems.squeezer;
-import org.usfirst.frc.team5638.robot.subsystems.intakeWheels;
+import org.usfirst.frc.team5638.robot.subsystems.*;
+import org.usfirst.frc.team5638.robot.commands.*;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -27,6 +22,24 @@ import org.usfirst.frc.team5638.robot.subsystems.intakeWheels;
  * project.
  */
 public class Robot extends IterativeRobot {
+	
+	Command shiftUp;
+	Command shiftDown;
+	Command armDownCom;
+	Command armUpCom;
+	Command dumperDump;
+	Command dumperReset;
+	Command elevatorDownCom;
+	Command elevatorUpCom;
+	Command forwardDriveCom;
+	Command intakeClose;
+	Command intakeIn;
+	Command intakeOpen;
+	Command intakeOut;
+	Command intakeSlow;
+	Command reverseDriveCom;
+	Command winchCom;
+	Command winchReverse;
 	
 	public static OI m_oi;
 	public static driveSub driveSub;
@@ -37,15 +50,15 @@ public class Robot extends IterativeRobot {
 	public static squeezer squeezer;
 	public static intakeWheels intakeWheels;
 	
-	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	//Command m_autonomousCommand;
+	//SendableChooser<Command> m_chooser = new SendableChooser<>();
 	
 
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
-	@Override
+	
 	public void robotInit() {
 		RobotMap.init();
 		m_oi = new OI();
@@ -56,6 +69,24 @@ public class Robot extends IterativeRobot {
 		elevatorSub = new elevatorSub();
 		squeezer = new squeezer();
 		intakeWheels = new intakeWheels();
+		
+		shiftUp = new shiftUp();
+		shiftDown = new shiftDown();
+		armDownCom = new armDownCom();
+		armUpCom = new armUpCom();
+		dumperDump = new dumperDump();
+		dumperReset = new dumperReset();
+		elevatorDownCom = new elevatorDownCom();
+		elevatorUpCom = new elevatorUpCom();
+		forwardDriveCom = new forwardDriveCom();
+		intakeClose = new intakeClose();
+		intakeIn = new intakeIn();
+		intakeOpen = new intakeOpen();
+		intakeOut = new intakeOut();
+		intakeSlow = new intakeSlow();
+		reverseDriveCom = new reverseDriveCom();
+		winchCom = new winchCom();
+		winchReverse = new winchReverse();
 		
 		//m_chooser.addDefault("Default Auto", new driveCom());
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -68,12 +99,12 @@ public class Robot extends IterativeRobot {
 	 * You can use it to reset any subsystem information you want to clear when
 	 * the robot is disabled.
 	 */
-	@Override
+	
 	public void disabledInit() {
 
 	}
 
-	@Override
+	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
@@ -89,9 +120,9 @@ public class Robot extends IterativeRobot {
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the switch structure below with additional strings & commands.
 	 */
-	@Override
+	
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		//m_autonomousCommand = m_chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -101,34 +132,34 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.start();
-		}
+		//if (m_autonomousCommand != null) {
+			//m_autonomousCommand.start();
+		//}
 	}
 
 	/**
 	 * This function is called periodically during autonomous.
 	 */
-	@Override
+
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
-	@Override
+
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
-		}
+		//if (m_autonomousCommand != null) {
+			//m_autonomousCommand.cancel();
+		//}
 	}
 
 	/**
 	 * This function is called periodically during operator control.
 	 */
-	@Override
+
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		
@@ -137,7 +168,7 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during test mode.
 	 */
-	@Override
+
 	public void testPeriodic() {
 	}
 }

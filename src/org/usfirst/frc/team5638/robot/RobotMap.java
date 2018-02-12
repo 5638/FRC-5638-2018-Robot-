@@ -60,10 +60,10 @@ public class RobotMap {
 		rightMaster = new WPI_TalonSRX(4);
 		rightSlave = new WPI_VictorSPX(5);
 		
-		leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		//leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		leftSlave.set(ControlMode.Follower, 2);
 		
-		rightMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		//rightMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		rightSlave.set(ControlMode.Follower, 4);
 		
 		SpeedControllerGroup leftGearbox = new SpeedControllerGroup(leftMaster, leftSlave);
@@ -73,13 +73,13 @@ public class RobotMap {
 		
 		shiftSol = new DoubleSolenoid(0, 0, 1);
 		
-		SmartDashboard.putNumber("Left", leftMaster.getSelectedSensorPosition(0)/4096);
-		SmartDashboard.putNumber("Right", rightMaster.getSelectedSensorPosition(0)/4096);
+		//SmartDashboard.putNumber("Left", leftMaster.getSelectedSensorPosition(0)/4096);
+		//SmartDashboard.putNumber("Right", rightMaster.getSelectedSensorPosition(0)/4096);
 		//DRIVE TRAIN
 
 		//ELEVATOR
 		elevator = new WPI_TalonSRX(6);
-		
+		/*
 		elevator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		elevator.setSensorPhase(true);
 		elevator.configNominalOutputForward(0, 10);
@@ -98,7 +98,7 @@ public class RobotMap {
 		
 		topLimitSwitch = new DigitalInput(1);
 		bottomLimitSwitch = new DigitalInput(2);
-		
+		*/
 		SmartDashboard.putNumber("Elevator", elevator.getSelectedSensorPosition(0));
 		//ELEVATOR
 		
@@ -112,7 +112,7 @@ public class RobotMap {
 
 		//DUMPER
 		dumper = new WPI_TalonSRX(7);
-		
+		/*
 		dumper.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		dumper.setSensorPhase(true);
 		dumper.configNominalOutputForward(0, 10);
@@ -128,6 +128,7 @@ public class RobotMap {
 		
 		int absolutePositionDumper = dumper.getSensorCollection().getPulseWidthPosition();
 		elevator.setSelectedSensorPosition(absolutePositionDumper, 0, 10);
+		*/
 		//DUMPER
 		
 		//CLIMBER
@@ -135,7 +136,7 @@ public class RobotMap {
 		winch = new WPI_TalonSRX(11);
 		winch2 = new WPI_VictorSPX(12);
 		
-		winch2.set(ControlMode.Follower, 11);
+		//winch2.set(ControlMode.Follower, 11);
 		//CLIMBER
 		
 		

@@ -5,6 +5,7 @@ import org.usfirst.frc.team5638.robot.commands.shiftDown;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team5638.robot.commands.shiftUp;
 
 /**
  *
@@ -17,7 +18,7 @@ public class shiftSub extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new shiftDown());
+    	setDefaultCommand(new shiftUp());
     }
     
     public void shiftUp() {
